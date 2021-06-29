@@ -1,0 +1,7 @@
+.far{
+    cursor: pointer;
+}
+
+.table td, th {
+    text-align: center;   
+ }

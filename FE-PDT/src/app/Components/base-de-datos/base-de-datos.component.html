@@ -1,0 +1,50 @@
+<div class="card">
+    <div class="card-body">
+        <h3 class="titulo mb-3">Base de Datos</h3>
+
+        <div class="d-flex align-items-start mb-3">
+            <div class="flex-sm-grow-1 pe-2">
+                <input type="text" class="form-control" placeholder="Buscar..." [(ngModel)]="search">
+            </div>
+            <div class="px-2">
+                <button type="button" (click)="downloadFile(userService.list)" class="btn btn-primary">Exportar &nbsp;<i class="fas fa-file-download"></i></button>
+            </div>
+            <div class="ps-2">
+                <input type="file" #csvReader name="Upload CSV" id="txtFileUpload" class="form-control" (change)="uploadListener($event)" accept=".csv" />
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr class="table-primary">
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Dirección</th>
+                        <th>Teléfono</th>
+                        <th>CURP</th>
+                        <th>Fecha de registro</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of userService.list | filter:search">
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.nombre }}</td>
+                        <td>{{ user.direccion }}</td>
+                        <td>{{ user.telefono }}</td>
+                        <td>{{ user.curp }}</td>
+                        <td>{{ user.fechaReg }}</td>
+                        <td class="justify-content-right">
+                            <i class="far fa-edit text-primary" (click)="editUser(user)"></i>
+                        </td>
+                        <td>
+                            <i class="far fa-trash-alt text-danger" (click)="deleteUser(user.id)"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

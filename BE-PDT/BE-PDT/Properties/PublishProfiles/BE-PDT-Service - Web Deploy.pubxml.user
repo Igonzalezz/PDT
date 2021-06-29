@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAB+OZiI1bS0Kxf1lE6Cp+twAAAAACAAAAAAADZgAAwAAAABAAAADsh6073SwVonm7dmrsqjp8AAAAAASAAACgAAAAEAAAAPy1E99D37mnwQes18JhiwCAAAAA3AAGgcBpIXadBaNg7xQWgpR354LsMo5LXOHO7nsiaeUiGWuYlgdnpq3X34IzQelTrovAM+Jf76l7gn6yGs43CvmP1WU6D19YOKR1x9d4L1htOBE38CDKirK3zxxhY0JBMd3kqWAHcxHIMx1Wk8WFn9YTTKV1tb78vijCNcahoVYUAAAAFCulLh29f9wZi4B3mOJMYxB83eM=</EncryptedPassword>
+    <History>True|2021-06-28T00:17:37.5017055Z;True|2021-06-27T12:57:42.0846360-07:00;True|2021-06-25T13:57:39.5271175-07:00;</History>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="devConn">
+      <Value>Data Source=tcp:be-pdtdbserver.database.windows.net,1433%3bInitial Catalog=BE-PDT_db%3bUser Id=dbtuser%40be-pdtdbserver%3bPassword=dbtPassw0rd</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <EFMigrations Include="BE_PDT.ApplicationDbContext">
+      <Value>Data Source=tcp:be-pdtdbserver.database.windows.net,1433%3bInitial Catalog=BE-PDT_db%3bUser Id=dbtuser%40be-pdtdbserver%3bPassword=dbtPassw0rd</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>
