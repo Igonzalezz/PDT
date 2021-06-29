@@ -11,7 +11,7 @@ import { User } from './../../models/User';
 })
 export class BaseDeDatosComponent implements OnInit {
 
-  headerLimit = 3;
+  headerLimit = 4;
   search: string;
   warning: boolean;
   @ViewChild('csvReader') csvReader: any;
@@ -42,11 +42,12 @@ export class BaseDeDatosComponent implements OnInit {
   }
 
   //method to generate a downloadable file from the database 
-  downloadFile(data: any, name="myData") {
+  downloadFile(data: any, name="myData", printHeader = true ) {
     const replacer = (key, value) => value === null ? '' : value; 
     const header = Object.keys(data[0]);
     let csv = data.map(row => header.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(','));
-    csv.unshift(header.join(','));
+    if(printHeader)
+      csv.unshift(header.join(','));
     let csvArray = csv.join('\r\n');
     var blob = new Blob([csvArray], {type: 'text/csv' })
     saveAs(blob, name+".csv");
@@ -112,6 +113,7 @@ export class BaseDeDatosComponent implements OnInit {
     this.csvReader.nativeElement.value = "";// Reset the Upload element
   }
 
+  
   //convert a CSV record to a User List for the api
   getUserListFromCSVFile(csvRecordsArray: any, header: any) {
     let csvFailArr = [];
@@ -134,9 +136,9 @@ export class BaseDeDatosComponent implements OnInit {
     //Store the bad records and make a downloable file.
     if(csvFailArr.length > 0){
       if (header.length > 0)
-        csvFailArr.unshift(header.join(',') );
+        csvFailArr.unshift(header);
       this.warning = true;
-      this.downloadFile(csvFailArr,"BadRecords")
+      this.downloadFile(csvFailArr,"BadRecords",false)
     }
 
     return csvToUser;
